@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>Логин</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="ping.css">
+
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td class="top">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td height="146" width="376" align="center" style="vertical-align: bottom"><a href="/"><img vspace="10" src="img/logo.gif" width="269" height="107"></a></td>
+					<td height="146" class="top_menu">
+						<div class="status">&nbsp;</div>
+						<table align="right" cellpadding="0" cellspacing="0" border="0" width="268" height="52" class="login_bg">
+							<tr>
+								<td>
+									<form>
+										<input name="">
+										<input name="">
+										<input type="image" class="submit" src="img/login.gif" width="23" height="12">
+									</form>
+								</td>
+							</tr>
+						</table>
+						<div class="main_menu">
+							<!--  class="selected" -->
+							<a href="/services.html">Услуги</a>
+							<a href="/tarifs.html">Тарифы</a>
+							<a href="/howpay.html">Как оплатить</a>
+							<a href="/devices.html">Устройства</a>
+							<a href="/about.html">О нас</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top"><img src="img/pic_4.jpg" width="350" height="320"></td>
+					<td valign="top" class="content" align="center">
+						<!-- -->
+							<img class="right_banner" src="img/banner_connect.gif" width="274" height="373">
+							$(if chap-id)
+								<form name="sendin" action="$(link-login-only)" method="post">
+									<input type="hidden" name="username" />
+									<input type="hidden" name="password" />
+									<input type="hidden" name="dst" value="$(link-orig)" />
+									<input type="hidden" name="popup" value="true" />
+								</form>
+								
+								<script type="text/javascript" src="/md5.js"></script>
+								<script type="text/javascript">
+								<!--
+									function doLogin() {
+									document.sendin.username.value = document.login.username.value;
+									document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+									document.sendin.submit();
+									return false;
+									}
+								//-->
+								</script>
+							$(endif)
+							
+							$(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+							<div class="content">Для бесплатного 15 минутного теста, <a href="/freetest.html" style="color: #FF8080; font-size: 15px">нажмите здесь</a> </div>
+							<div class="notice" style="color: #c1c1c1; font-size: 15px">$(if trial == 'yes')Для бесплатного 15 минутного теста, <a style="color: #FF8080; font-size: 15px"href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">нажмите здесь</a>.$(endif)</div><br />
+							<div class="notice" style="color: #c1c1c1; font-size: 9px">Пожалуйста введите Ваш логин пароль, который был прислан смс сообщением.</div><br />
+							
+							<table cellpadding="0" cellspacing="0" align="">
+								<tr>
+									<td align="center" valign="bottom" colspan="2">
+										<form name="login" action="$(link-login-only)" method="post"
+											$(if chap-id) onSubmit="return doLogin()" $(endif)>
+											<input type="hidden" name="dst" value="$(link-orig)" />
+											<input type="hidden" name="popup" value="true" />
+											
+												<table width="100" class="login" style="background-color: #ffffff">
+													<tr><td align="right">Логин:</td>
+															<td><input class="biginput" name="username" type="text" value="$(username)"/></td>
+													</tr>
+													<tr><td align="right">Пароль:</td>
+															<td><input class="biginput" name="password" type="password"/></td>
+													</tr>
+													<tr>
+															<td colspan="2" class="button" align="center"><input type="submit" class="button" value="ВОЙТИ" /></td>
+													</tr>
+												</table>
+										</form>
+									</td>
+								</tr>
+							</table>
+							<!-- -->
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td class="banners_1">
+						<img src="img/h1_4clients.gif" width="94" height="22"><br>
+						<ul>
+							<!--  class="selected" -->
+							<li><a href="/howpay.html"><img src="img/ico_1.gif" width="50" height="42" align="absmiddle">Как оплатить</a></li>
+							<li><a href="/status.html"><img src="img/ico_2.gif" width="50" height="37" align="absmiddle">Ваш статус</a></li>
+							<li><a href="/about.html"><img src="img/ico_3.gif" width="50" height="37" align="absmiddle">Контакты</a></li>
+						</ul>
+						<div style="padding: 70px 60px 0px 0px" class="content">
+							<img src="img/h1_pay.gif" width="203" height="52">
+							<p>
+								Оплата услуг Dream-Net.ru — происходит через терминалы QIWI, это прежде всего удобно,
+								быстро, а самое главное, без процентов и комиссии. Оплату можно произвести в любом 
+								магазине, торговом центре 	и время зачисления Вашего платежа составит не более 20 мин.
+								Инструкция как оплачивать наши услуги находиться в разделе <br>
+								“Как оплатить”.
+							</p>
+							<p>
+								Если у вас возникли проблемы при оплате, а также по любым другим вопросам обращайтесь в наш Контактный центр по телефону 
+								<nobr>(495) 668-08-18</nobr>.
+							</p>
+						</div>
+					</td>
+					<td class="content">
+						<p>
+							<table width="100%">
+								<tr>
+									<td class="banners_2"><img src="img/banner_pay.gif"></td>
+									<td class="banners_3"><img src="img/banner_address.gif"></td>
+								</tr>
+							</table>
+						</p>
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td class="content" style="padding-right: 70px;">
+									<h2>Скоростной интернет в каждый офис и квартиру</h2>
+									<h2 class="gray">Безлимитные тарифы</h2>
+									<table class="tarifs">
+										<tr>
+											<td>
+												<span>Тик-Так (срок действия платежа 1 час)</span><em>50 руб.</em>
+											</td>
+										</tr>
+										<tr>				
+											<td>
+												<span>Сутки (срок действия платежа 24 часа)</span><em>100 руб.</em>
+											</td>
+										</tr>
+										<tr>				
+											<td>
+												<span>Абонемент (срок действия платежа 30 дней)</span><em>500 руб.</em>
+											</td>
+										</tr>
+										<tr>				
+											<td>
+												<span>Абонемент плюс (срок действия платежа 30 дней + скорость 2 Мбит/сек)</span><em>800 руб.</em>
+											</td>
+										</tr>
+
+									</table>
+									<p><b>Как подключиться к «WiFi»:</b></p>
+									<p>
+										Ваш ноутбук всегда покажет Вам, что обнаружены новые беспроводные сети! Просто выберете сеть  
+										с названием Dream-Net.ru и нажмите подключиться! Ничего другого Вам делать не нужно! 
+										Оплатите, получите смс-сообщение с логином и паролем, введите данные на главной странице и пользуйтесь!    
+									</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="bottom">
+			<blockquote>
+				&copy; 2011, Dreamline<br>
+				Все права защищены.
+ 			</blockquote>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+</body>
+</html>

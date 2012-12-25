@@ -1,0 +1,326 @@
+body {
+	margin: 0px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: none;
+}
+
+form {
+	margin: 0px;
+}
+
+table,td {
+	background-repeat: no-repeat;
+}
+
+img {
+	border: none;
+}
+
+p {
+	margin: 10px 0px 10px 0px;
+}
+
+td,div,p,span {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #666666;
+}
+
+.repx {
+	background-repeat: repeat-x;
+}
+
+.repy {
+	background-repeat: repeat-y;
+}
+
+a:link, a:active, a:visited {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: underline;
+}
+
+a:hover {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: none;
+}
+
+a:link#invert, a:active#invert, a:visited#invert {
+	text-decoration: none;
+}
+
+a:hover#invert {
+	text-decoration: underline;
+}
+
+h1 {
+	margin: 10px 0px 10px 0px;
+	font-weight: normal;
+	font-size: 14pt;
+	color: #666666;
+}
+
+h2 {
+	font-weight: normal;
+	color: #67b500;
+	font-size: 21px;
+}
+
+h2.gray {
+	color: #333333;
+}
+
+h3 {
+	margin: 5px 0px 10px 0px;
+	font-size: 1.2em;
+	color: #666666;
+}
+
+h4 {
+	color: #666666;
+	font-size: 8pt;
+}
+
+h5 {
+	color: #666666;
+	font-size: 7pt;
+}
+
+
+h6 {
+	color: #666666;
+	font-size: 6pt;
+}
+
+.top {
+	height: 183px;
+	vertical-align: top;
+}
+
+.top_menu {
+	vertical-align: top;
+	padding-right: 60px;
+}
+
+.login_bg {
+	background: url('img/login_bg.gif') 0px 0px no-repeat;
+	visibility: hidden;
+	display: none;
+}
+
+.login_bg td {
+	padding: 22px 0 10px 19px;
+}
+
+.login_bg input {
+	border: 1px solid #b9b9b9;
+	font-size: 11px;
+	width: 100px;
+	padding: 2px;
+}
+
+.login_bg input.submit {
+	border: none;
+	width: 23px;
+	display: block;
+	padding-top: 3px;
+	float: right;
+	margin-right: 14px;
+}
+
+.main_menu {
+	clear: both;
+	padding: 0px 0px 0px 0px;
+	min-width: 480px;
+}
+
+.main_menu a:link, .main_menu a:active, .main_menu a:visited, .main_menu a:hover {
+	line-height: 30px;
+	font-weight: normal;
+	color: #000000;
+	font-size: 18px;
+	display: block;
+	float: left;
+	padding: 1px 10px;
+}
+
+.main_menu a.selected:link, .main_menu a.selected:active, .main_menu a.selected:visited, .main_menu a.selected:hover {
+	background-color: #1ebdef;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.right_banner {
+	float: right;
+	margin-left: 20px;
+}
+
+.banners_1 {
+	padding-left: 60px;
+	width: 318px;
+}
+
+.banners_1 ul, .banners_1 ul li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.banners_1 ul {
+	margin-top: 20px;
+}
+
+.banners_1 ul li {
+	width: 210px;
+	height: 32px;
+	margin-bottom: 5px;
+	line-height: 30px;
+}
+
+.banners_1 li img {
+	position: relative;
+	margin-right: 10px;
+	float: left;
+	height: 32px;
+}
+
+.banners_1 ul li.selected {
+	background: url('img/arrow.gif') #1ebdef 100% 50% no-repeat;
+}
+
+.banners_1 a:link, .banners_1 a:active, .banners_1 a:visited, .banners_1 a:hover {
+	color: #1ebdef;
+	font-size: 18px;
+	white-space: nowrap;
+}
+
+.banners_1 ul li.selected a:link, .banners_1 ul li.selected a:active, .banners_1 ul li.selected a:visited, .banners_1 ul li.selected a:hover {
+	color: #ffffff;
+}
+
+.banners_2, .banners_3 {
+	padding-top: 36px;
+}
+
+.banners_1, .banners_2, .banners_3 {
+	padding-bottom: 20px;
+}
+
+.content {
+	vertical-align: top;
+	line-height: 19px;
+}
+
+.tarifs {
+	width: 100%;
+	margin: 0px 0px 30px 0px;
+}
+
+.tarifs td {
+	color: #333333;
+	background: url('img/tarifs.gif') 0px 17px repeat-x;
+	line-height: 22px;
+}
+
+.tarifs td span {
+	font-size: 13px;
+	float: left;
+	color: #333333;
+	font-style: italic;
+	background-color: #FFFFFF;
+	padding: 0px 10px 0px 0px;
+}
+
+.tarifs td em {
+	font-size: 13px;
+	background-color: #FFFFFF;
+	padding: 0px 0px 0px 10px;
+	float: right;
+	font-weight: bold;
+}
+
+.bottom {
+	background: url('img/wifilogo.gif') 100% 100% no-repeat;
+	height: 120px;
+}
+
+.bottom blockquote {
+	margin-left: 60px;
+	color: #cccccc;
+}
+
+.tabula {
+	border-collapse: collapse;
+	border: 1px solid #CCCCCC;
+}
+
+.tabula td {
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+	font-size: 12pt;
+}
+
+.tabula td.footer {
+	border: none;
+}
+
+input.button {
+	font-size: 16pt;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+
+.login td {
+	font-size: 16pt;
+}
+
+input.biginput {
+	font-size: 16pt;
+}
+
+ul.red, ul.red li {
+	color: red
+}
+
+div.pay h1 {
+	color: red;
+}
+
+div.pay th {
+	width: 130px;
+	text-align: left;
+	font-size: 11px;
+}
+
+div.pay th, div.pay td {
+	padding: 2px 5px 2px 0px;
+}
+
+div.pay .orderbutton {
+	margin-top: 10px;
+}
+
+.status {
+	width:142px;
+	float: right;
+	background-repeat: no-repeat;
+	background-position: top right;
+	line-height: 75px;
+	height: 72px;
+	color: #67B500;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.content ul li {
+	margin: 5px auto;
+}
+
+.content ul li span {
+	margin-left: -15px;
+}
