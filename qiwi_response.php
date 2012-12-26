@@ -53,11 +53,7 @@ class TestServer {
             $checkBillParams = new CheckBill();
             $checkBillParams->login = LOGIN;
             $checkBillParams->password = PASSWORD;
-            $checkBillParams->txn = $param->txn;
-
-            require('routeros_api.php');
-
-            $API = new routeros_api();
+            $checkBillParams->txn = "TEST-1";
 
             //var_dump($service->checkBill($checkBillParams));
             $bill = $service->checkBill($checkBillParams);
@@ -65,12 +61,11 @@ class TestServer {
             fwrite($f, print_r($bill, true));
             fclose($f);
 
+            /*require('routeros_api.php');
+            $API = new routeros_api();
             $API->debug = false;
 
             if ($API->connect('94.228.205.2', 'hotspot', 'hotspot1234')) {
-                $temp = new Response();
-                $temp->updateBillResult = 1;
-                return $temp;
 
                 $API->comm("/ip/hotspot/user/add", array(
                     "name"     => "user" . $param->txn,
@@ -81,7 +76,27 @@ class TestServer {
 
                 $API->disconnect();
 
-            }
+            }*/
+            $dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
+            $db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
+
+            $sql = "INSERT INTO dreamnet (`user`, `ammount`, `date`, `status`, `endtime`)
+                VALUES (?, ?, ?, ?, ?)";
+            $time = strtotime($bill->date);
+            $endtime = $time + 15;
+
+            $sth = $db->prepare($sql);
+            $sth->execute(array(
+                $bill->user,
+                $bill->amount,
+                date('Y-m-d H:s:i', $time),
+                60,
+                date('Y-m-d H:s:i', $endtime)
+            ));
+
+
+
+
         } else if ($param->status > 100) {
             // заказ не оплачен (отменен пользователем, недостаточно средств на балансе и т.п.)
             // найти заказ по номеру счета ($param->txn), пометить как неоплаченный

@@ -72,8 +72,8 @@ class routeros_api
         for ($ATTEMPT = 1; $ATTEMPT <= $this->attempts; $ATTEMPT++) {
             $this->connected = false;
             $this->debug('Connection attempt #' . $ATTEMPT . ' to ' . $ip . ':' . $this->port . '...');
-            if ($this->socket = @fsockopen($ip, $this->port, $this->error_no, $this->error_str, $this->timeout)) {
-                socket_set_timeout($this->socket, $this->timeout);
+            if ($this->socket = fsockopen($ip, $this->port, $this->error_no, $this->error_str, $this->timeout)) {
+                socket_set_timeout($this->socket, $this->timeout, 0);
                 $this->write('/login');
                 $RESPONSE = $this->read(false);
                 if ($RESPONSE[0] == '!done') {
