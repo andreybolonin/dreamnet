@@ -1,5 +1,5 @@
 <?php
-require_once ('./routeros_api.php');
+require('routeros_api.php');
 
 $API = new routeros_api();
 
@@ -7,13 +7,24 @@ $API->debug = false;
 
 if ($API->connect('94.228.205.2', 'hotspot', 'hotspot1234')) {
 
-    $API->write('/user/getall');
 
-    $READ = $API->read(false);
-    $ARRAY = $API->parse_response($READ);
+    $BRIDGEINFO = $API->comm('/ip/hotspot/user/print', array(
+        ".proplist" => ".id",
+        "?name" => "usertest"
+    ));
 
-    var_dump($ARRAY);
+    /*$API->comm('/ip/hotspot/user/remove', array(
+        ".id"=>$BRIDGEINFO[0]['.id'],
+    ));*/
+
+    $users = $API->comm('/ip/hotspot/user/getall', array());
+
 
     $API->disconnect();
 
+    var_dump($users, $BRIDGEINFO);
+
+} else {
+    echo 'can\'t connect!';
 }
+
