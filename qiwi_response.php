@@ -47,13 +47,20 @@ class TestServer {
             // заказ оплачен
             // найти заказ по номеру счета ($param->txn), пометить как оплаченный
 
+            //Тарифы по ценам
+            $tarifs = array(
+                50 => 3600,
+                100 => 24*3600,
+                500 => 30*24*3600,
+                800 => 30*24*3600
+            );
             $service = new IShopServerWSService('./qiwi/IShopServerWS.wsdl', array('location'      => 'http://ishop.qiwi.ru/services/ishop', 'trace' => TRACE));
 
 
             $checkBillParams = new CheckBill();
             $checkBillParams->login = LOGIN;
             $checkBillParams->password = PASSWORD;
-            $checkBillParams->txn = "TEST-1";
+            $checkBillParams->txn = $param->txn;
 
             //var_dump($service->checkBill($checkBillParams));
             $bill = $service->checkBill($checkBillParams);
@@ -80,10 +87,73 @@ class TestServer {
             $dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
             $db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
 
-            $sql = "INSERT INTO dreamnet (`user`, `ammount`, `date`, `status`, `endtime`)
-                VALUES (?, ?, ?, ?, ?)";
+            /**
+             * Проверяем наличие платежа в базе.
+             */
+            $sql = "SELECT `id`, `user`, `com`
+                    FROM dreamnet
+                    WHERE `status` = 5
+                        AND `user` = ?";
+            $sth = $db->prepare($sql);
+            $sth->execute(array($bill->user));
+            $row = $sth->fetchAll();
+
+            if (empty($row)) {
+                $temp = new Response();
+                $temp->updateBillResult = 1;
+                return $temp;
+            }
+
+            $row = array_shift($row);
+
+            /**
+             * Проверям, есть ли пользователь в онлайне, и если да, то не поменял ли он роутер
+             */
+
+            $sql = $sql = "SELECT `id`, `user`, `com`, DATE_FORMAT(`endtime`, '%d.%m.%Y %H:%i:%s') AS endtime, `ammount`
+                    FROM dreamnet
+                    WHERE `endtime` > NOW()
+                        AND `status` != 5
+                        AND `user` = ?";
+            $sth = $db->prepare($sql);
+            $sth->execute(array($bill->user));
+            $row2 = $sth->fetchAll();
+
+            if (!empty($row2)) {
+                $row2 = array_shift($row2);
+
+                if ($row2['com'] == $row2['com']){
+                    //Продлеваем время
+                    $sql = "UPDATE dreamnet
+                        SET `endtime` = :newtime,
+                            `ammount` = :ammount
+                        WHERE `id` = :id";
+                    $ammount = $row2['ammount'] + $bill->amount;
+                    $addtime = isset($tarifs[(int)$bill->amount]) ? $tarifs[(int)$bill->amount] : 0;
+                    $endtime = strtotime($row2['endtime']) + $addtime;
+                    $endtime = date('Y-m-d H:i:s', $endtime);
+                    $stf = $db->prepare($sql);
+                    $stf->execute(array(
+                        ':newtime' => $endtime,
+                        ':ammount' => $ammount,
+                        ':id' => $row2['id']
+                    ));
+
+                    //Удаляем временную запись
+                    $sql = "DELETE FROM dreamnet WHERE  `id` = ?";
+                    $stf = $db->prepare($sql);
+                    $stf->execute(array($row['id']));
+                }
+                $temp = new Response();
+                $temp->updateBillResult = 0;
+                return $temp;
+            }
+
+            $sql = "INSERT INTO dreamnet (`user`, `ammount`, `date`, `status`, `endtime`, `com`)
+                VALUES (?, ?, ?, ?, ?, ?)";
             $time = strtotime($bill->date);
-            $endtime = $time + 15;
+            $addtime = isset($tarifs[(int)$bill->amount]) ? $tarifs[(int)$bill->amount] : 0;
+            $endtime = $time + $addtime;
 
             $sth = $db->prepare($sql);
             $sth->execute(array(
@@ -91,8 +161,14 @@ class TestServer {
                 $bill->amount,
                 date('Y-m-d H:s:i', $time),
                 60,
-                date('Y-m-d H:s:i', $endtime)
+                date('Y-m-d H:s:i', $endtime),
+                $row['com']
             ));
+
+            //Удаляем временную запись
+            $sql = "DELETE FROM dreamnet WHERE  `id` = ?";
+            $stf = $db->prepare($sql);
+            $stf->execute(array($row['id']));
 
 
 
