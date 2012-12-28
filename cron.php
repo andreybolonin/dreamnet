@@ -109,7 +109,10 @@ foreach ($routers as $key => $router) {
                 'name' => $name,
                 'pass' => $pass
             );
-            $SMS->sendSMS($user['user'], "login: $name\npassword: $pass", 'dreamnet');
+            $sms_success = $SMS->sendSMS($user['user'], "login: $name\npassword: $pass", 'dreamnet');
+            if ($sms_success) {
+                echo "<br />SMS for {$user['user']} is sent<br />>";
+            }
         }
 
         $update_sql = "UPDATE dreamnet SET `status` = ? WHERE `status` = ? AND `com` = ?";

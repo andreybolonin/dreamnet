@@ -1,5 +1,4 @@
 <?php
-
 if ($_REQUEST['com'] && $_REQUEST['to']) {
     $dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
     $db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
