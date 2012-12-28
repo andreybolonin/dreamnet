@@ -34,11 +34,13 @@ $routers = array(
 );
 
 require('routeros_api.php');
+require __DIR__ . '/sms/mainsms.class.php';
 
 $dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
 $db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
 
 $API = new routeros_api();
+$SMS = new MainSMS('dreamnet', 'adc6e247a98b1');
 
 $API->debug = false;
 
@@ -79,6 +81,11 @@ foreach ($routers as $key => $router) {
             $stf->execute(array_merge(array(0), $rows_for_delete));
         }
 
+        echo "***********************************************";
+        echo "<h3>Роутер {$router['ip']}</h3>";
+        echo "Польователи, удаленные с роутера " . $router['ip'] . ":";
+        var_dump($rows);
+
         /**
          * Добавяем новых поьзователей
          */
@@ -87,19 +94,31 @@ foreach ($routers as $key => $router) {
         $stf = $db->prepare($new_sql);
         $stf->execute(array(60, $key));
         $rows = $stf->fetchAll();
+        $add_users = array();
 
         foreach ($rows as $user) {
+            $name = "u" . $user['user'];
+            $pass = substr(md5(time()), 0, 5);
             $API->comm("/ip/hotspot/user/add", array(
-                "name"     => "u" . $user['user'],
-                "password" => substr(md5(time()), 0, 5),
+                "name"     => $name,
+                "password" => $pass,
                 "profile" => "tariff_1",
                 "comment"  => "{$user['user']} {$user['date']}",
             ));
+            $add_users[] = array(
+                'name' => $name,
+                'pass' => $pass
+            );
+            $SMS->sendSMS($user['user'], "login: $name\npassword: $pass", 'dreamnet');
         }
 
         $update_sql = "UPDATE dreamnet SET `status` = ? WHERE `status` = ? AND `com` = ?";
         $stf = $db->prepare($update_sql);
         $stf->execute(array(100, 60, $key));
+
+        echo "Польователи добавленные на роутер " . $router['ip'];
+        var_dump($add_users);
+        echo "***********************************************<br />";
 
 
 
@@ -109,12 +128,12 @@ foreach ($routers as $key => $router) {
         ".id"=>$BRIDGEINFO[0]['.id'],
     ));*/
 
-        $users = $API->comm('/ip/hotspot/user/getall', array());
+       // $users = $API->comm('/ip/hotspot/user/getall', array());
 
 
         $API->disconnect();
 
-        var_dump($users, $BRIDGEINFO);
+        //var_dump($users, $BRIDGEINFO);
 
     } else {
         echo 'can\'t connect!';
