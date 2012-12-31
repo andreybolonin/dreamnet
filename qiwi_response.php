@@ -8,11 +8,7 @@
  */
 
 require_once ('./qiwi/IShopServerWSService.php');
-
-define('LOGIN', 4321);
-define('PASSWORD', 'yfljtkbrjvfhs');
-
-define('TRACE', 1);
+include_once ('./config.php');
 
 $s = new SoapServer('./qiwi/IShopClientWS.wsdl', array('classmap' => array('tns:updateBill' => 'Param', 'tns:updateBillResponse' => 'Response')));
 // $s = new SoapServer('IShopClientWS.wsdl');
@@ -32,13 +28,7 @@ class Param {
 
 class TestServer {
     function updateBill($param) {
-
-        // ¬ыводим все прин€тые параметры в качестве примера и дл€ отладки
-        /*$f = fopen(__DIR__ . '/result.txt', 'w');
-        fwrite($f, print_r($param, true));
-        fclose($f);*/
-
-
+        global $tarifs;
         // проверить password, login
 
         // ¬ зависимости от статуса счета $param->status мен€ем статус заказа в магазине
@@ -47,13 +37,6 @@ class TestServer {
             // заказ оплачен
             // найти заказ по номеру счета ($param->txn), пометить как оплаченный
 
-            //“арифы по ценам
-            $tarifs = array(
-                50 => 3600,
-                100 => 24*3600,
-                500 => 30*24*3600,
-                800 => 30*24*3600
-            );
             $service = new IShopServerWSService('./qiwi/IShopServerWS.wsdl', array('location'      => 'http://ishop.qiwi.ru/services/ishop', 'trace' => TRACE));
 
 
@@ -84,8 +67,8 @@ class TestServer {
                 $API->disconnect();
 
             }*/
-            $dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
-            $db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
+            $dsn = "{DBTYPE}:dbname={DBNAME};host={DBHOST}";
+            $db = new PDO($dsn, DBLOGIN, DBPASS);
 
             /**
              * ѕровер€ем наличие платежа в базе.

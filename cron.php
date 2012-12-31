@@ -1,46 +1,22 @@
 <?php
-
-$routers = array(
-    'WiFi:kalininec' => array(
-            'ip' => '94.228.205.2',
-            'login' => 'hotspot',
-            'pass' => 'hotspot1234'
-        ),
-    'WiFi:zvenigorod' => array(
-           'ip' => '94.228.205.2',
-            'login' => 'hotspot',
-            'pass' => 'hotspot1234'
-        ),
-    'WiFi:yakovlevskoe' => array(
-            'ip' => '94.228.205.2',
-            'login' => 'hotspot',
-            'pass' => 'hotspot1234'
-        ),
-    'WiFi:selyatino' => array(
-            'ip' => '94.228.205.2',
-            'login' => 'hotspot',
-            'pass' => 'hotspot1234'
-        ),
-    'WiFi:aprelevka' => array(
-            'ip' => '94.228.205.2',
-           'login' => 'hotspot',
-           'pass' => 'hotspot1234'
-        ),
-    'WiFi:naro-fominsk' => array(
-            'ip' => '94.228.205.2',
-            'login' => 'hotspot',
-            'pass' => 'hotspot1234'
-        ),
-);
-
+require (__DIR__ . '/config.php');
 require('routeros_api.php');
 require __DIR__ . '/sms/mainsms.class.php';
 
-$dsn = 'mysql:dbname=znachok_test;host=znachok.mysql.ukraine.com.ua';
-$db = new PDO($dsn, 'znachok_test', '3dqkhnz5');
+function parseSMS($text, $params)
+{
+    foreach ($params as $key => $param) {
+        $text = str_replace('{%' . $key . '%}', $param, $text);
+    }
+
+    return $text;
+}
+
+$dsn = "{DBTYPE}:dbname={DBNAME};host={DBHOST}";
+$db = new PDO($dsn, DBLOGIN, DBPASS);
 
 $API = new routeros_api();
-$SMS = new MainSMS('dreamnet', 'adc6e247a98b1');
+$SMS = new MainSMS(SMSLOGIN, SMSPASS);
 
 $API->debug = false;
 
@@ -65,11 +41,14 @@ foreach ($routers as $key => $router) {
         foreach ($rows as $user) {
             $BRIDGEINFO = $API->comm('/ip/hotspot/user/print', array(
                 ".proplist" => ".id",
-                "?name" => 'u' . $user['user']
+                "?name" =>$user['user']
             ));
             $API->comm('/ip/hotspot/user/remove', array(
                 ".id"=>$BRIDGEINFO[0]['.id'],
             ));
+
+            $sms_success = $SMS->sendSMS($user['user'], parseSMS(ADDTEXT, array('user' => $user['user'])), SMSSENDER);
+
             $rows_for_delete[] = $user['id'];
             $counter[] = '?';
         }
@@ -97,7 +76,7 @@ foreach ($routers as $key => $router) {
         $add_users = array();
 
         foreach ($rows as $user) {
-            $name = "u" . $user['user'];
+            $name = $user['user'];
             $pass = substr(md5(time()), 0, 5);
             $API->comm("/ip/hotspot/user/add", array(
                 "name"     => $name,
@@ -109,7 +88,7 @@ foreach ($routers as $key => $router) {
                 'name' => $name,
                 'pass' => $pass
             );
-            $sms_success = $SMS->sendSMS($user['user'], "login: $name\npassword: $pass", 'dreamnet');
+            $sms_success = $SMS->sendSMS(parseSMS(ADDTEXT, array('user' => $name, 'pass' => $pass)), SMSSENDER);
             if ($sms_success) {
                 echo "<br />SMS for {$user['user']} is sent<br />>";
             }
