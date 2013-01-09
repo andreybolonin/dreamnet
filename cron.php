@@ -12,7 +12,7 @@ function parseSMS($text, $params)
     return $text;
 }
 
-$dsn = "{DBTYPE}:dbname={DBNAME};host={DBHOST}";
+$dsn = DBTYPE . ":dbname=" . DBNAME . ";host=" . DBHOST;
 $db = new PDO($dsn, DBLOGIN, DBPASS);
 
 $API = new routeros_api();

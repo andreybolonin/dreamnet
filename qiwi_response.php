@@ -67,7 +67,7 @@ class TestServer {
                 $API->disconnect();
 
             }*/
-            $dsn = "{DBTYPE}:dbname={DBNAME};host={DBHOST}";
+            $dsn = $dsn = DBTYPE . ":dbname=" . DBNAME . ";host=" . DBHOST;            ;
             $db = new PDO($dsn, DBLOGIN, DBPASS);
 
             /**

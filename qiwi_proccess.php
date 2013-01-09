@@ -1,6 +1,8 @@
 <?php
-$dsn = "{DBTYPE}:dbname={DBNAME};host={DBHOST}";
+include_once ('./config.php');
+$dsn = DBTYPE . ":dbname=" . DBNAME . ";host=" . DBHOST;
 $db = new PDO($dsn, DBLOGIN, DBPASS);
+
 $routers = array(
     'WiFi:kalininec' => array(
         'from' => '3747',
