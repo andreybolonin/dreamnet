@@ -48,7 +48,7 @@ class TestServer {
             //var_dump($service->checkBill($checkBillParams));
             $bill = $service->checkBill($checkBillParams);
             $f = fopen(__DIR__ . '/result.txt', 'w');
-            fwrite($f, print_r($bill, true));
+            fwrite($f, print_r($param, true));
             fclose($f);
 
             /*require('routeros_api.php');
