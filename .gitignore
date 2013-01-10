@@ -1,0 +1,8 @@
+# cache
+application/configs/cache/*
+application/log/*
+public/images/captcha/*
+
+# phpStorm
+.idea/*
+.idea/
