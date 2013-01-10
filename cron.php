@@ -69,7 +69,7 @@ foreach ($routers as $key => $router) {
          * Добавяем новых поьзователей
          */
 
-        $new_sql =  "SELECT `user`, `date` FROM dreamnet WHERE `status` = ? AND `com` = ?";
+        $new_sql =  "SELECT `user`, `date`, `endtime` FROM dreamnet WHERE `status` = ? AND `com` = ?";
         $stf = $db->prepare($new_sql);
         $stf->execute(array(60, $key));
         $rows = $stf->fetchAll();
@@ -88,7 +88,12 @@ foreach ($routers as $key => $router) {
                 'name' => $name,
                 'pass' => $pass
             );
-            $sms_success = $SMS->sendSMS($name, parseSMS(ADDTEXT, array('user' => $name, 'pass' => $pass)), SMSSENDER);
+            $sms_params = array(
+                'user' => $name,
+                'pass' => $pass,
+                'endtime' => $user['endtime']
+            );
+            $sms_success = $SMS->sendSMS($name, parseSMS(ADDTEXT, $sms_params), SMSSENDER);
             if ($sms_success) {
                 echo "<br />SMS for {$user['user']} is sent<br />>";
             }
