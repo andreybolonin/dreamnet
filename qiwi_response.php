@@ -105,7 +105,7 @@ class TestServer {
             if (!empty($row2)) {
                 $row2 = array_shift($row2);
 
-                if ($row2['com'] == $row2['com']){
+                if ($row2['com'] == $row['com']){
                     //Продлеваем время
                     $sql = "UPDATE dreamnet
                         SET `endtime` = :newtime,
