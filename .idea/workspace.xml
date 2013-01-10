@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77a3f5eb-e895-4606-affd-344033e3e952" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cron.php" afterPath="$PROJECT_DIR$/cron.php" />
     </list>
     <ignored path="dreamnet.iws" />
@@ -35,7 +34,7 @@
       <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="65" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.096774">
+            <state line="77" column="8" selection-start="1917" selection-end="1927" vertical-scroll-proportion="-14.225806">
               <folding />
             </state>
           </provider>
@@ -62,7 +61,7 @@
       <file leaf-file-name="cron.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cron.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="64" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.7129799">
+            <state line="120" column="10" selection-start="3870" selection-end="3870" vertical-scroll-proportion="0.1773309">
               <folding />
             </state>
           </provider>
@@ -331,13 +330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="65" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.096774">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qiwi_response.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="23" selection-start="874" selection-end="874" vertical-scroll-proportion="-0.65384614">
@@ -345,9 +337,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="8" selection-start="1917" selection-end="1927" vertical-scroll-proportion="-14.225806">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cron.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="64" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.7129799">
+        <state line="120" column="10" selection-start="3870" selection-end="3870" vertical-scroll-proportion="0.1773309">
           <folding />
         </state>
       </provider>

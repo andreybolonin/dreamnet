@@ -47,7 +47,7 @@ foreach ($routers as $key => $router) {
                 ".id"=>$BRIDGEINFO[0]['.id'],
             ));
 
-            $sms_success = $SMS->sendSMS($user['user'], parseSMS(ADDTEXT, array('user' => $user['user'])), SMSSENDER);
+            $sms_success = $SMS->sendSMS($user['user'], parseSMS(DELETETEXT, array('user' => $user['user'])), SMSSENDER);
 
             $rows_for_delete[] = $user['id'];
             $counter[] = '?';
@@ -93,9 +93,11 @@ foreach ($routers as $key => $router) {
                 'pass' => $pass,
                 'endtime' => $user['endtime']
             );
-            $sms_success = $SMS->sendSMS($name, parseSMS(ADDTEXT, $sms_params), SMSSENDER);
+            $sms_text = parseSMS(ADDTEXT, $sms_params);
+            //$sms_success = $SMS->sendSMS($name, $sms_text, SMSSENDER);
             if ($sms_success) {
                 echo "<br />SMS for {$user['user']} is sent<br />";
+                echo "SMS Text: $sms_text<br />" ;
             }
         }
 
@@ -115,7 +117,8 @@ foreach ($routers as $key => $router) {
         ".id"=>$BRIDGEINFO[0]['.id'],
     ));*/
 
-       // $users = $API->comm('/ip/hotspot/user/getall', array());
+        //$users = $API->comm('/ip/hotspot/user/getall', array());
+        //var_dump($users);
 
 
         $API->disconnect();
