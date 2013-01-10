@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77a3f5eb-e895-4606-affd-344033e3e952" name="Default" comment="" />
+    <list default="true" id="77a3f5eb-e895-4606-affd-344033e3e952" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cron.php" afterPath="$PROJECT_DIR$/cron.php" />
+    </list>
     <ignored path="dreamnet.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +35,7 @@
       <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="73" selection-start="1814" selection-end="1821" vertical-scroll-proportion="-16.153847">
+            <state line="74" column="65" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.096774">
               <folding />
             </state>
           </provider>
@@ -59,7 +62,7 @@
       <file leaf-file-name="cron.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cron.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="23" selection-start="2882" selection-end="2893" vertical-scroll-proportion="0.49360147">
+            <state line="97" column="64" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.7129799">
               <folding />
             </state>
           </provider>
@@ -314,13 +317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qiwi_response.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="23" selection-start="874" selection-end="874" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/qiwi-form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="72" selection-start="419" selection-end="429" vertical-scroll-proportion="-3.9230769">
@@ -337,14 +333,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="73" selection-start="1814" selection-end="1821" vertical-scroll-proportion="-16.153847">
+        <state line="74" column="65" selection-start="1806" selection-end="1806" vertical-scroll-proportion="-12.096774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qiwi_response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="23" selection-start="874" selection-end="874" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cron.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="23" selection-start="2882" selection-end="2893" vertical-scroll-proportion="0.49360147">
+        <state line="97" column="64" selection-start="3218" selection-end="3218" vertical-scroll-proportion="0.7129799">
           <folding />
         </state>
       </provider>

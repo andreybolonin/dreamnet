@@ -72,7 +72,7 @@ define('SMSSENDER', 'DreamLine');
 //Для подстановки срока действия - {%endtime%}
 //Перенос строки - \n
 //Для избежания возможных проблем с кодировкой, текст лучше вводить латиницей.
-define('ADDTEXT', "Логин: {%user%}\nПароль: {%pass%}\n Срок действия - {%endtime%}");
+define('ADDTEXT', "Login: {%user%}\nPassword: {%pass%}\n Duration - {%endtime%}");
 //шаблон текста удаления
 //Использование тегов {%pass%} и {%endtime%} не допускается
 define('DELETETEXT', "Vse usligi otklucheni");

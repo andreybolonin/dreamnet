@@ -95,7 +95,7 @@ foreach ($routers as $key => $router) {
             );
             $sms_success = $SMS->sendSMS($name, parseSMS(ADDTEXT, $sms_params), SMSSENDER);
             if ($sms_success) {
-                echo "<br />SMS for {$user['user']} is sent<br />>";
+                echo "<br />SMS for {$user['user']} is sent<br />";
             }
         }
 
