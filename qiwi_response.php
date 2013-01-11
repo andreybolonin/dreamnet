@@ -8,7 +8,7 @@
  */
 
 require_once ('./qiwi/IShopServerWSService.php');
-include_once ('./config.php');
+include_once ('./include.php');
 
 $s = new SoapServer('./qiwi/IShopClientWS.wsdl', array('classmap' => array('tns:updateBill' => 'Param', 'tns:updateBillResponse' => 'Response')));
 // $s = new SoapServer('IShopClientWS.wsdl');
@@ -28,7 +28,7 @@ class Param {
 
 class TestServer {
     function updateBill($param) {
-        global $tarifs;
+        global $tarifs, $db;
         // проверить password, login
 
         // В зависимости от статуса счета $param->status меняем статус заказа в магазине
@@ -67,8 +67,6 @@ class TestServer {
                 $API->disconnect();
 
             }*/
-            $dsn = $dsn = DBTYPE . ":dbname=" . DBNAME . ";host=" . DBHOST;            ;
-            $db = new PDO($dsn, DBLOGIN, DBPASS);
 
             /**
              * Проверяем наличие платежа в базе.
