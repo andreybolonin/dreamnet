@@ -89,7 +89,7 @@ class TestServer {
              * Ëîãèğóåì ïëàòåæ
              */
 
-            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `tsn`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `tsn`, `type`, `status`) VALUES (NOW(), ?, ?, ?, ?)";
             $stf = $db->prepare($sql);
             $stf->execute(array(
                 $bill->user,
