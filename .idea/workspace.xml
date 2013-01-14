@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77a3f5eb-e895-4606-affd-344033e3e952" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/add-user.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cron.php" afterPath="$PROJECT_DIR$/cron.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qiwi_response.php" afterPath="$PROJECT_DIR$/qiwi_response.php" />
     </list>
     <ignored path="dreamnet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,10 +22,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="config.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="28" selection-start="1191" selection-end="1191" vertical-scroll-proportion="-5.375">
+            <state line="63" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.771529">
               <folding />
             </state>
           </provider>
@@ -39,7 +34,7 @@
       <file leaf-file-name="howpay.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/howpay.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="72" selection-start="9533" selection-end="9547" vertical-scroll-proportion="-18.26923">
+            <state line="154" column="72" selection-start="9533" selection-end="9547" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,16 +43,16 @@
       <file leaf-file-name="qiwi_proccess.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/qiwi_proccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="4" selection-start="1192" selection-end="1504" vertical-scroll-proportion="-6.769231">
+            <state line="50" column="4" selection-start="1192" selection-end="1504" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add-user.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="add-user.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/add-user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="50" selection-start="2935" selection-end="2935" vertical-scroll-proportion="0.6545454">
+            <state line="94" column="27" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-32.5">
               <folding />
             </state>
           </provider>
@@ -66,7 +61,7 @@
       <file leaf-file-name="cron.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cron.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="8" selection-start="3290" selection-end="3368" vertical-scroll-proportion="-26.0">
+            <state line="95" column="8" selection-start="3290" selection-end="3368" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,8 +93,8 @@
         <option value="$PROJECT_DIR$/include.php" />
         <option value="$PROJECT_DIR$/cron.php" />
         <option value="$PROJECT_DIR$/qiwi_response.php" />
-        <option value="$PROJECT_DIR$/config.php" />
         <option value="$PROJECT_DIR$/add-user.php" />
+        <option value="$PROJECT_DIR$/config.php" />
       </list>
     </option>
   </component>
@@ -136,6 +131,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -156,7 +152,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -180,13 +175,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="778" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16936791" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17179903" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -300,9 +295,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/qiwi_response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="69" column="0" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include.php">
@@ -314,42 +307,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/qiwi-form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="72" selection-start="419" selection-end="429" vertical-scroll-proportion="0.17801048">
-          <folding />
-        </state>
+        <state line="6" column="72" selection-start="419" selection-end="429" vertical-scroll-proportion="0.17801048" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/qiwi_proccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="4" selection-start="1192" selection-end="1504" vertical-scroll-proportion="-6.769231">
+        <state line="50" column="4" selection-start="1192" selection-end="1504" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cron.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="8" selection-start="3290" selection-end="3368" vertical-scroll-proportion="-26.0">
+        <state line="95" column="8" selection-start="3290" selection-end="3368" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/howpay.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="72" selection-start="9533" selection-end="9547" vertical-scroll-proportion="-18.26923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="28" selection-start="1191" selection-end="1191" vertical-scroll-proportion="-5.375">
+        <state line="154" column="72" selection-start="9533" selection-end="9547" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/add-user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="50" selection-start="2935" selection-end="2935" vertical-scroll-proportion="0.6545454">
+        <state line="94" column="27" selection-start="3117" selection-end="3117" vertical-scroll-proportion="-32.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="0.771529">
           <folding />
         </state>
       </provider>
