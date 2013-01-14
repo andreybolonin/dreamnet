@@ -1,16 +1,7 @@
 <?php
-require (__DIR__ . '/config.php');
+require (__DIR__ . '/include.php');
 require('routeros_api.php');
 require __DIR__ . '/sms/mainsms.class.php';
-
-function parseSMS($text, $params)
-{
-    foreach ($params as $key => $param) {
-        $text = str_replace('{%' . $key . '%}', $param, $text);
-    }
-
-    return $text;
-}
 
 $dsn = DBTYPE . ":dbname=" . DBNAME . ";host=" . DBHOST;
 $db = new PDO($dsn, DBLOGIN, DBPASS);
@@ -61,9 +52,9 @@ foreach ($routers as $key => $router) {
         }
 
         echo "***********************************************";
-        echo "<h3>Роутер {$router['ip']}</h3>";
-        echo "Польователи, удаленные с роутера " . $router['ip'] . ":";
-        var_dump($rows);
+        echo "<h3>Router {$router['ip']}</h3>";
+        echo "Users deleted from router " . $router['ip'] . ":";
+        echo '<pre>' . print_r($rows, true) . '</pre>';
 
         /**
          * Добавяем новых поьзователей
@@ -105,8 +96,8 @@ foreach ($routers as $key => $router) {
         $stf = $db->prepare($update_sql);
         $stf->execute(array(100, 60, $key));
 
-        echo "Польователи добавленные на роутер " . $router['ip'];
-        var_dump($add_users);
+        echo "Users added to router " . $router['ip'];
+        echo '<pre>' . print_r($add_users, true) . '</pre>';
         echo "***********************************************<br />";
 
 
