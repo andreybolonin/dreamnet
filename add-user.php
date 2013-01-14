@@ -97,6 +97,19 @@ if (isset ($_POST['send'])) {
         $end_date_value = $_POST['date'];
         $router_value = $_POST['router'];
     }
+
+    /**
+     * Логгируем
+     */
+    $log_status = empty($errors) ? "OK" : "FAILED";
+
+    $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+    $stf = $db->prepare($sql);
+    $stf->execute(array(
+        $_POST['user'],
+        'add',
+        $log_status
+    ));
 }
 
 ?>

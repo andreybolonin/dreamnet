@@ -85,6 +85,19 @@ class TestServer {
                 return $temp;
             }
 
+            /**
+             * Логируем платеж
+             */
+
+            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `tsn`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+            $stf = $db->prepare($sql);
+            $stf->execute(array(
+                $bill->user,
+                $param->txn,
+                'pay',
+                "OK"
+            ));
+
             $row = array_shift($row);
 
             /**
@@ -150,6 +163,18 @@ class TestServer {
             $sql = "DELETE FROM dreamnet WHERE  `id` = ?";
             $stf = $db->prepare($sql);
             $stf->execute(array($row['id']));
+
+            /**
+             * Логтруем платеж
+             */
+
+            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `tsn`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+            $stf = $db->prepare($sql);
+            $stf->execute(array(
+                $user['user'],
+                'delete',
+                "OK"
+            ));
 
 
 

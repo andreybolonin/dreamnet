@@ -38,6 +38,18 @@ foreach ($routers as $key => $router) {
                 ".id"=>$BRIDGEINFO[0]['.id'],
             ));
 
+            /**
+             * Логируем
+             */
+
+            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+            $stf = $db->prepare($sql);
+            $stf->execute(array(
+                $user['user'],
+                'delete',
+                "OK"
+            ));
+
             $sms_success = $SMS->sendSMS($user['user'], parseSMS(DELETETEXT, array('user' => $user['user'])), SMSSENDER);
 
             $rows_for_delete[] = $user['id'];
@@ -75,6 +87,7 @@ foreach ($routers as $key => $router) {
                 "profile" => "tariff_1",
                 "comment"  => "{$user['user']} {$user['date']}",
             ));
+
             $add_users[] = array(
                 'name' => $name,
                 'pass' => $pass
@@ -84,6 +97,34 @@ foreach ($routers as $key => $router) {
                 'pass' => $pass,
                 'endtime' => $user['endtime']
             );
+            $BRIDGEINFO = $API->comm('/ip/hotspot/user/print', array(
+                ".proplist" => ".id",
+                "?name" =>$name
+            ));
+
+            $log_status = "OK";
+
+            if (empty ($BRIDGEINFO)) {
+                $sql = "UPDATE `dreamnet` SET `status` = ? WHERE `id` = ?";
+                $stf = $db->prepare($sql);
+                $stf->execute(array(75, $user['id']));
+                $log_status = "FAILED";
+            }
+
+            /**
+             * Логируем
+             */
+            $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+            $stf = $db->prepare($sql);
+            $stf->execute(array(
+                $name,
+                'add',
+                $log_status
+            ));
+            if ($log_status == "FAILED") {
+                continue;
+            }
+
             $sms_text = parseSMS(ADDTEXT, $sms_params);
             $sms_success = $SMS->sendSMS($name, $sms_text, SMSSENDER);
             if ($sms_success) {
@@ -120,4 +161,7 @@ foreach ($routers as $key => $router) {
         echo 'can\'t connect!';
     }
 }
+$update_sql = "UPDATE dreamnet SET `status` = ? WHERE `status` = ?";
+$stf = $db->prepare($update_sql);
+$stf->execute(array(60, 75));
 
