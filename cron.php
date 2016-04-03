@@ -1,8 +1,12 @@
 <?php
 
-require __DIR__.'/include.php';
-require 'routeros_api.php';
-require __DIR__.'/sms/mainsms.class.php';
+require_once __DIR__.'/vendor/autoload.php';
+
+// require __DIR__.'/include.php';
+// require 'routeros_api.php';
+// require __DIR__.'/sms/mainsms.class.php';
+use Karser\MainSMSBundle\Model\MainSMS;
+use PEAR2\Net\RouterOS;
 
 $dsn = DBTYPE.':dbname='.DBNAME.';host='.DBHOST;
 $db = new PDO($dsn, DBLOGIN, DBPASS);
@@ -15,7 +19,7 @@ $API->debug = false;
 foreach ($routers as $key => $router) {
     if ($API->connect($router['ip'], $router['login'], $router['pass'])) {
         /*
-         * Удаляем пользователей, у которых закончилось время.
+         * пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
          */
 
         $sql = 'SELECT `id`, `user`
@@ -39,7 +43,7 @@ foreach ($routers as $key => $router) {
             ));
 
             /*
-             * Логируем
+             * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
              */
 
             $sql = 'INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)';
@@ -68,7 +72,7 @@ foreach ($routers as $key => $router) {
         echo '<pre>'.print_r($rows, true).'</pre>';
 
         /*
-         * Добавяем новых поьзователей
+         * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
          */
 
         $new_sql = 'SELECT `user`, `date`, `endtime` FROM dreamnet WHERE `status` = ? AND `com` = ?';
@@ -111,7 +115,7 @@ foreach ($routers as $key => $router) {
             }
 
             /*
-             * Логируем
+             * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
              */
             $sql = 'INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)';
             $stf = $db->prepare($sql);
