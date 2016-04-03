@@ -2,6 +2,7 @@
 application/configs/cache/*
 application/log/*
 public/images/captcha/*
+/vendor/
 
 # phpStorm
 .idea/*

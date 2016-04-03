@@ -1,0 +1,7 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "karser/mainsms-bundle": "dev-master",
+        "pear2/net_routeros": "dev-master"
+    }
+}
