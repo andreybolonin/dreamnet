@@ -6,7 +6,6 @@ require_once __DIR__.'/vendor/autoload.php';
 // require 'routeros_api.php';
 // require __DIR__.'/sms/mainsms.class.php';
 use Karser\MainSMSBundle\Model\MainSMS;
-use PEAR2\Net\RouterOS;
 
 $dsn = DBTYPE.':dbname='.DBNAME.';host='.DBHOST;
 $db = new PDO($dsn, DBLOGIN, DBPASS);

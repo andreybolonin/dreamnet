@@ -1,14 +1,13 @@
 <?php
-require (__DIR__ . '/include.php');
-require('routeros_api.php');
-require __DIR__ . '/sms/mainsms.class.php';
+require __DIR__.'/include.php';
+require 'routeros_api.php';
+require __DIR__.'/sms/mainsms.class.php';
 
 $errors = array();
-$user_value = "";
-$end_date_value = "";
-$router_value = "";
-if (isset ($_POST['send'])) {
-
+$user_value = '';
+$end_date_value = '';
+$router_value = '';
+if (isset($_POST['send'])) {
     $API = new routeros_api();
     $SMS = new MainSMS(SMSLOGIN, SMSPASS);
 
@@ -17,18 +16,18 @@ if (isset ($_POST['send'])) {
     $router_info = $routers[$_POST['router']];
 
     if ($API->connect($router_info['ip'], $router_info['login'], $router_info['pass'])) {
-        /**
+        /*
          * Проверяем, есть ли такой пользователь на роутере
          */
         $BRIDGEINFO = $API->comm('/ip/hotspot/user/print', array(
-            ".proplist" => ".id",
-            "?name" =>$_POST['user']
+            '.proplist' => '.id',
+            '?name' => $_POST['user'],
         ));
         if (!empty($BRIDGEINFO)) {
-            $errors[] = "Такой пользователь уже есть на этом роутере";
+            $errors[] = 'Такой пользователь уже есть на этом роутере';
         }
 
-        /**
+        /*
          * Если все хорошо - добавляем пользователя
          */
 
@@ -37,34 +36,34 @@ if (isset ($_POST['send'])) {
             $end_time = time() + $time;
             $name = $_POST['user'];
             $pass = substr(md5(time()), 0, 5);
-            $API->comm("/ip/hotspot/user/add", array(
-                "name"     => $name,
-                "password" => $pass,
-                "profile" => "tariff_1",
-                "comment"  => "{$_POST['user']} " . date('Y-m-d H:i:s'),
+            $API->comm('/ip/hotspot/user/add', array(
+                'name' => $name,
+                'password' => $pass,
+                'profile' => 'tariff_1',
+                'comment' => "{$_POST['user']} ".date('Y-m-d H:i:s'),
             ));
             //шлем смс
             $add_users[] = array(
                 'name' => $name,
-                'pass' => $pass
+                'pass' => $pass,
             );
             $sms_params = array(
                 'user' => $name,
                 'pass' => $pass,
-                'endtime' => date('Y-m-d H:i:s', $end_time)
+                'endtime' => date('Y-m-d H:i:s', $end_time),
             );
             $sms_text = parseSMS(ADDTEXT, $sms_params);
             $sms_success = $SMS->sendSMS($name, $sms_text, SMSSENDER);
 
             //Если в базе есть такой оплативший пользователь - обновляем его, если нету - добавляем
 
-            $sql = "SELECT `id` FROM `dreamnet` WHERE `user` = ? AND `status`=? AND `com` = ?";
+            $sql = 'SELECT `id` FROM `dreamnet` WHERE `user` = ? AND `status`=? AND `com` = ?';
             $stf = $db->prepare($sql);
             $stf->execute(array($name, 60, $_POST['router']));
             $users = $stf->fetchAll();
 
             if (empty($users)) {
-                $sql = "INSERT INTO `dreamnet` (`user`, `ammount`, `date`, `status`, `endtime`, `com`) VALUES (?, ?, ?, ?, ?, ?)";
+                $sql = 'INSERT INTO `dreamnet` (`user`, `ammount`, `date`, `status`, `endtime`, `com`) VALUES (?, ?, ?, ?, ?, ?)';
                 $stf = $db->prepare($sql);
                 $stf->execute(array(
                     $name,
@@ -72,43 +71,42 @@ if (isset ($_POST['send'])) {
                     date('Y-m-d H:i:s'),
                     100,
                     date('Y-m-d H:i:s', $end_time),
-                    $_POST['router']
+                    $_POST['router'],
                 ));
             } else {
-                $sql = "UPDATE `dreamnet` SET
+                $sql = 'UPDATE `dreamnet` SET
                     `status` = ?,
                     `endtime` = ?
-                    WHERE `id` = ?";
+                    WHERE `id` = ?';
                 $stf = $db->prepare($sql);
                 $stf->execute(array(
                     100,
                     date('Y-m-d H:i:s', $end_time),
-                    $users[0]['id']
+                    $users[0]['id'],
                 ));
             }
         }
-
-    }else {
-        $errors[] = "Не могу подключится к роутеру";
+    } else {
+        $errors[] = 'Не могу подключится к роутеру';
     }
 
-    if (!empty ($errors)) {
+    if (!empty($errors)) {
         $user_value = $_POST['user'];
         $end_date_value = $_POST['date'];
         $router_value = $_POST['router'];
     }
 
-    /**
+    /*
      * Логгируем
      */
-    $log_status = empty($errors) ? "OK" : "FAILED";
+    $log_status = empty($errors) ? 'OK' : 'FAILED';
 
-    $sql = "INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)";
+    $sql = 'INSERT INTO `dreamnet_log` (`date`, `user`, `type`, `status`) VALUES (NOW(), ?, ?, ?)';
     $stf = $db->prepare($sql);
     $stf->execute(array(
         $_POST['user'],
         'add',
-        $log_status
+        $log_status,
     ));
 }
 
@@ -148,7 +146,7 @@ if (isset ($_POST['send'])) {
             <td>
                 <select name="router">
                     <?php foreach ($routers as $key => $router) : ?>
-                    <?php $selected = ($key ==$router_value) ? " selected='slected'" : '' ?>
+                    <?php $selected = ($key == $router_value) ? " selected='slected'" : '' ?>
                     <option value="<?php echo $key?>"<?php echo $selected?>><?php echo $key?></option>
                     <?php endforeach;?>
                 </select>

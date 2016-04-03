@@ -90,7 +90,7 @@
                                     <td>
                                         <select id="nasp">
                                             <option value=""></option>
-                                            <?php foreach($routers as $key => $router) : ?>
+                                            <?php foreach ($routers as $key => $router) : ?>
                                                 <?php $selected = ($_REQUEST['com'] == $key) ? 'selected="selected"' : ''?>
                                                 <option from="<?php echo $router['from']?>" value="<?php echo $key?>"<?php echo $selected?>><?php echo $router['value']?></option>
                                             <?php endforeach;?>
