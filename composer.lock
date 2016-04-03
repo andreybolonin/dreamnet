@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51fc1c4e25ec095fc77bfa1bdd3c8da0",
-    "content-hash": "5f6b0d3301be8fb2bf8ced127ba6ebb2",
+    "hash": "d72538294d5fb0b2a46098e88b1ef2e8",
+    "content-hash": "eb69218be084125b50acf9cd392fb201",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1768,6 +1768,45 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2016-03-25 01:40:30"
+        },
+        {
+            "name": "werkint/qiwi",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Werkint/Qiwi.git",
+                "reference": "7bbfbc3019aec0a6e194e9999d9cd14a630bd9c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Werkint/Qiwi/zipball/7bbfbc3019aec0a6e194e9999d9cd14a630bd9c4",
+                "reference": "7bbfbc3019aec0a6e194e9999d9cd14a630bd9c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Werkint\\Qiwi": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "own"
+            ],
+            "authors": [
+                {
+                    "name": "Bogdan Yurov",
+                    "email": "bogdan@yurov.me"
+                },
+                {
+                    "name": "ООО \"КИВИ Кошелек\""
+                }
+            ],
+            "description": "Платежная библиотека для QIWI через SOAP",
+            "time": "2013-06-30 15:33:25"
         }
     ],
     "packages-dev": [],
