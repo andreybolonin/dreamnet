@@ -21,3 +21,11 @@ In this project we have integrated three services via API:
         "werkint/qiwi": "^1.0",
     }
 ```
+
+# Roadmap
+
+1) Implement Silex
+
+2) Fixed templates
+
+3) Clear business logic
