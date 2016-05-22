@@ -4,7 +4,7 @@
         "karser/mainsms-bundle": "dev-master",
         "pear2/net_routeros": "dev-master",
         "werkint/qiwi": "^1.0",
-        "silex/silex": "^1.3",
+        "silex/silex": "^2.0",
         "twig/twig": "^1.24"
     }
 }
